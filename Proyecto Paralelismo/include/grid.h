@@ -22,6 +22,8 @@ void grid_free(grid_t *g);
 void grid_fill(grid_t *g, real_t v);
 void grid_apply_bc(grid_t *g, real_t hot, real_t cold);
 void grid_init_bc(grid_t *g, real_t hot, real_t cold);
+void grid_print(const grid_t *g, int max_nx, int max_ny);
+
 
 void grid_swap(grid_t *a, grid_t *b);
 real_t grid_checksum(const grid_t *g);
