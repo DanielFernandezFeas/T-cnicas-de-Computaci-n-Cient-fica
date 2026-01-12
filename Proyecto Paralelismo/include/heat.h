@@ -25,6 +25,9 @@ int heat_step_seq(grid_t *g, grid_t *g_copy);
  * Returns 0 on success, negative on error.
  */
 int heat_iterate_seq(grid_t *g, int nsteps);
+    int heat_step_omp(grid_t *g, grid_t *g_copy, int nthreads);
+    int heat_iterate_omp(grid_t *g, int nsteps, int nthreads);
+
 
 #ifdef __cplusplus
 }
