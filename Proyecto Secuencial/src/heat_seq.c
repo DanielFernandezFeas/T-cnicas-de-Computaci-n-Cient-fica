@@ -4,7 +4,7 @@
 #include "grid.h"
 #include "config.h"
 // SIMDe SSE (single-precision) for portable `simde__m128` operations
-// #include <simde/x86/sse.h>
+#include <simde/x86/sse.h>
 
 int heat_step_seq(grid_t *g, grid_t *g_copy)
 {

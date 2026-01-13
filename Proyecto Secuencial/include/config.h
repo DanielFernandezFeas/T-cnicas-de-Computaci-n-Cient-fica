@@ -1,0 +1,15 @@
+//
+// Created by DANIEL on 30/12/2025.
+//
+
+#ifndef T_CNICAS_DE_COMPUTACI_N_CIENT_FICA_CONFIG_H
+#define T_CNICAS_DE_COMPUTACI_N_CIENT_FICA_CONFIG_H
+
+typedef float real_t;
+
+#define HOT  100.0f
+#define COLD 0.0f
+#define DEFAULT_ITERS 1000
+#define DEFAULT_REPS  5
+
+#endif //T_CNICAS_DE_COMPUTACI_N_CIENT_FICA_CONFIG_H

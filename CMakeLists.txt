@@ -12,6 +12,10 @@ add_library(common
         src/grid.c
         src/io.c
         src/timer.c
+        "Proyecto Secuencial/include/config.h"
+        "Proyecto Secuencial/include/config.h"
+        "Proyecto Secuencial/include/grid.h"
+        "Proyecto Secuencial/src/heat_seq_opt.c"
 )
 
 # ---------- SEQ ----------
