@@ -15,7 +15,7 @@ add_library(common
         "Proyecto Secuencial/include/config.h"
         "Proyecto Secuencial/include/config.h"
         "Proyecto Secuencial/include/grid.h"
-        "Proyecto Secuencial/src/heat_seq_opt.c"
+        "Proyecto Secuencial/src/heat_seq_baseline.c"
 )
 
 # ---------- SEQ ----------
