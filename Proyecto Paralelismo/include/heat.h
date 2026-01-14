@@ -5,32 +5,37 @@
 #ifndef T_CNICAS_DE_COMPUTACI_N_CIENT_FICA_HEAT_H
 #define T_CNICAS_DE_COMPUTACI_N_CIENT_FICA_HEAT_H
 
+#include <mpi.h>
 #include "config.h"
 #include "grid.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-/*
- * Perform a single heat diffusion step.
- * g: pointer to the current grid (updated in-place via swap)
- * g_copy: pointer to a temporary grid (may be NULL)
- * Returns 0 on success, negative on error.
- */
-int heat_step_seq(grid_t *g, grid_t *g_copy);
+    /*
+     * Perform a single heat diffusion step.
+     * g: pointer to the current grid (updated in-place via swap)
+     * g_copy: pointer to a temporary grid (may be NULL)
+     * Returns 0 on success, negative on error.
+     */
+    int heat_step_seq(grid_t *g, grid_t *g_copy);
 
-/*
- * Perform nsteps iterations of the heat solver on grid g.
- * Returns 0 on success, negative on error.
- */
-int heat_iterate_seq(grid_t *g, int nsteps);
+    /*
+     * Perform nsteps iterations of the heat solver on grid g.
+     * Returns 0 on success, negative on error.
+     */
+    int heat_iterate_seq(grid_t *g, int nsteps);
+
     int heat_step_omp(grid_t *g, grid_t *g_copy, int nthreads);
     int heat_iterate_omp(grid_t *g, int nsteps, int nthreads);
 
+    int heat_step_mpi(grid_t *g, grid_t *g_copy, int local_ny, MPI_Comm comm);
+    int heat_iterate_mpi(grid_t *g, int nsteps, MPI_Comm comm);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif //T_CNICAS_DE_COMPUTACI_N_CIENT_FICA_HEAT_H
+#endif // T_CNICAS_DE_COMPUTACI_N_CIENT_FICA_HEAT_H
