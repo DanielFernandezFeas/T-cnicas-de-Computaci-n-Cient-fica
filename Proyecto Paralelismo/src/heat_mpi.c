@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "heat.h"
 #include "grid.h"
+#include <string.h>
+
 
 int heat_step_mpi(grid_t *local,
                   grid_t *tmp,
@@ -35,6 +37,9 @@ int heat_step_mpi(grid_t *local,
             rank + 1, 0,
             comm, MPI_STATUS_IGNORE);
     }
+
+    size_t n = (size_t)nx * (size_t)(local_ny + 2);
+    memcpy(tmp->data, local->data, n * sizeof(real_t));
 
     // actualiza la malla local (no tocar las filas de contorno globales)
     for (int y = 1; y <= local_ny; ++y)

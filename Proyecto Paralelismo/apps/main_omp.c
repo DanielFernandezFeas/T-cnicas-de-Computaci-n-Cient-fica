@@ -2,16 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <omp.h>
 
 #include "grid.h"
 #include "config.h"
 #include "heat.h"
 
 static double now_sec(void) {
-    struct timespec ts;
-    clock_gettime(CLOCK_MONOTONIC, &ts);
-    return (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9;
+    return omp_get_wtime();
 }
+
 
 // Uso: ./main_omp nx ny iters reps threads
 int main(int argc, char **argv) {

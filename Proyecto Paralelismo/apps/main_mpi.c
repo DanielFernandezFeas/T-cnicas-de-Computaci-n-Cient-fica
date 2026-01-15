@@ -8,11 +8,8 @@
 #include "config.h"
 #include "heat.h"
 
-static double now_sec(void)
-{
-    struct timespec ts;
-    clock_gettime(CLOCK_MONOTONIC, &ts);
-    return (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9;
+static double now_sec(void) {
+    return MPI_Wtime();
 }
 
 int main(int argc, char *argv[])
@@ -79,13 +76,14 @@ int main(int argc, char *argv[])
             MPI_Abort(MPI_COMM_WORLD, 2);
         }
 
-        double dt = t1 - t0;
+        double dt_local = t1 - t0;
+        double dt = 0.0;
+        MPI_Reduce(&dt_local, &dt, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
 
         if (rank == 0) {
             sum += dt;
             if (dt < best) best = dt;
             checksum_last = grid_checksum(&g);
-        }
     }
 
     if (rank == 0) {
